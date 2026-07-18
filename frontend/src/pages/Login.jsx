@@ -55,7 +55,7 @@ export default function Login({ onLoginSuccess }) {
       <div style={styles.flexWrapper}>
         
         {/* Giant Leopard Sidekick */}
-        <div style={{ ...styles.giantEmoji, ...styles.leftEmoji }}>🐆</div>
+        <div style={{ ...styles.giantEmoji, ...styles.leftEmoji }}>☃️ 🐆</div>
 
         {/* Login Central Card */}
         <div style={styles.card}>
@@ -88,7 +88,7 @@ export default function Login({ onLoginSuccess }) {
         </div>
 
         {/* Giant Tiger Sidekick */}
-        <div style={{ ...styles.giantEmoji, ...styles.rightEmoji }}>🐅</div>
+        <div style={{ ...styles.giantEmoji, ...styles.rightEmoji }}>😼 🐅</div>
 
       </div>
     </div>
