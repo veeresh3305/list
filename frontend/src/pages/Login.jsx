@@ -12,8 +12,8 @@ export default function Login({ onLoginSuccess }) {
 
     // Dynamically point to localhost:5000 during local dev, and relative /api on Vercel/Production
     const API_URL = window.location.hostname === 'localhost' 
-      ? 'http://localhost:5000/api/login' 
-      : '/api/login';
+  ? 'http://localhost:5000/api/login' 
+  : 'https://your-backend.onrender.com/api/login';
 
     try {
       const response = await fetch(API_URL, {
