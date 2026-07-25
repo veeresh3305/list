@@ -1,18 +1,22 @@
 import React, { useState } from 'react';
-import PixelSnow from '../PixelSnow'; // Adjusted path assuming it's in the parent folder
+import PixelSnow from '../components/PixelSnow'; // Adjusted path assuming it's in the parent folder
 
 export default function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+ const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    // Dynamically point to localhost:5000 during local dev, and relative /api on Vercel/Production
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:5000/api/login' 
+      : '/api/login';
+
     try {
-      // CHANGED: Removed http://localhost:5000 so it utilizes your Vercel vercel.json rewrite rules securely
-      const response = await fetch('/api/login', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, key })
@@ -21,7 +25,7 @@ export default function Login({ onLoginSuccess }) {
       const data = await response.json();
 
       if (data.success) {
-        onLoginSuccess(); 
+        onLoginSuccess(username.trim()); 
       } else {
         setError(data.message || 'Incorrect Access Key!');
       }
