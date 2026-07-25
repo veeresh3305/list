@@ -6,13 +6,17 @@ export default function Login({ onLoginSuccess }) {
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
+    // Paste your Render URL here 👇
+    const API_URL = window.location.hostname === 'localhost' 
+      ? 'http://localhost:5000/api/login' 
+      : 'https://list-backend-6h93.onrender.com/api/login';
+
     try {
-      // Uses relative /api/login path for deployment/Vercel routing
-      const response = await fetch('/api/login', {
+      const response = await fetch(API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, key })
