@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import PixelSnow from '../PixelSnow'; // Adjusted path assuming it's in the parent folder
+import PixelSnow from '../components/PixelSnow'; // Adjusted path assuming it's in the parent folder
 
 export default function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
