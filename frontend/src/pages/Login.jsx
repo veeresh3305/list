@@ -1,22 +1,18 @@
 import React, { useState } from 'react';
-import PixelSnow from '../components/PixelSnow'; // Adjusted path assuming it's in the parent folder
+import PixelSnow from '../PixelSnow'; // Adjusted path assuming it's in the parent folder
 
 export default function Login({ onLoginSuccess }) {
   const [username, setUsername] = useState('');
   const [key, setKey] = useState('');
   const [error, setError] = useState('');
 
- const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
 
-    // Dynamically point to localhost:5000 during local dev, and relative /api on Vercel/Production
-    const API_URL = window.location.hostname === 'localhost' 
-      ? 'http://localhost:5000/api/login' 
-      : 'https://list-snowy-six.vercel.app/api/login'; // <-- Replace with your actual live backend URL
-
     try {
-      const response = await fetch(API_URL, {
+      // Uses relative /api/login path for deployment/Vercel routing
+      const response = await fetch('/api/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username, key })
