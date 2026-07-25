@@ -1,4 +1,4 @@
-const QUIZ_BANK = require('./quizQuestions');
+const QUIZ_BANK = require('./quizquestions');
 
 const QUESTIONS_PER_GAME = 10;
 const ROUND_DURATION_SECONDS = 120; // 2 minutes
